@@ -1,16 +1,12 @@
 # Assignment : 03 - Book Stock Management Project
 ### Name : Mahamud Hasan
-### [Email: ](rabbithasan@outlook.com)
+### Email: [rabbithasan@outlook.com](rabbithasan@outlook.com)
 
 ## Functionalities
-PHP, HTML, CSS-Tailwind, and SQLite for database
+PHP, HTML, CSS-Tailwind, and MySQL for database
 - Register user
 - Login
-- View profile in dashboard
-- Edit profile (name, email) in dashboard
-- Change password from dashboard
 - Logout
-- Forget password and recover password
 
 ## Book Management
 - Add/Edit/Delete Book Categories
@@ -21,29 +17,17 @@ PHP, HTML, CSS-Tailwind, and SQLite for database
 - mahamud@example.com - hellom@hamuD
 
 ## Assignment Requirements:
-1. User Registration -
-- Create a registration form with the following fields:
-- Full Name
-- Email (must be unique)
-- Password
-- Password must be hashed before storing in the database.
-- Validate user input (empty fields, valid email format, password length).
-- Store user data in a MySQL database.
+1. User Registration
+2. User Login
+3. Logout
 
-2. User Login -
-- Create a login form using email and password.
-- Verify user credentials from the database.
-- Use sessions to maintain login state.
-- Display appropriate error messages for invalid login attempts.
-
-3. Book Management -
+4. Book Management:
 - After login, users should be able to:
 - Add/Edit/Delete Book Categories
 - Add/Edit/Delete Book Authors
 - Add/Edit/Delete Books
 
-4. Logout-
-- Implement a logout feature.
+
 
 
 
