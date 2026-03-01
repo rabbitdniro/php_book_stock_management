@@ -1,3 +1,37 @@
+# Assignment : 03 - Book Stock Management Project
+### Name : Mahamud Hasan
+### Email: [rabbithasan@outlook.com](rabbithasan@outlook.com)
+
+## Functionalities
+PHP, HTML, CSS-Tailwind, and MySQL for database
+- Register user
+- Login
+- Logout
+
+## Book Management
+- Add/Edit/Delete Book Categories
+- Add/Edit/Delete Authors
+- Add/Edit/Delete Books
+
+## Test Users
+- mahamud@example.com - hellom@hamuD
+
+## Assignment Requirements:
+1. User Registration
+2. User Login
+3. Logout
+
+4. Book Management:
+- After login, users should be able to:
+- Add/Edit/Delete Book Categories
+- Add/Edit/Delete Book Authors
+- Add/Edit/Delete Books
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
