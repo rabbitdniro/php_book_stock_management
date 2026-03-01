@@ -17,12 +17,14 @@ class CategoryController extends Controller
         // return view('pages.categories');
     }
 
+    // Show form to create a new category
     public function showCreateForm()
     {
         // Show form to create a new category
         return view('pages.categories-create');
     }
 
+    // Handle the form submission to create a new category
     public function store(Request $request)
     {
         // Handle the form submission to create a new category
@@ -51,6 +53,63 @@ class CategoryController extends Controller
             'updated_at' => now(),
         ]);
 
+        return redirect()->route('categories.index');
+    }
+
+    // Show form to edit an existing category
+    public function show($id)
+    {
+        // dd($id);
+        if ($id === null) {
+            return redirect()->route('categories.index');
+        }
+
+        // Show form to edit an existing category
+        $category = DB::table('categories')->where('id', $id)->first();
+        // dd($category);
+        if (!$category) {
+            return redirect()->route('categories.index');
+        }
+        return view('pages.categories-edit', ['category' => $category]);
+    }
+
+    // Handle the form submission to update an existing category
+    public function update(Request $request, $id)
+    {
+        // Handle the form submission to update an existing category
+        if (!Auth::user()) {
+            return redirect()->route('login');
+        }
+
+        $validatedCategory = $request->validate([
+            'category_name' => 'required|string|max:255',
+            'category_description' => 'nullable|string',
+            'category_status' => 'required|in:active,inactive',
+        ]);
+
+        $category_name = $validatedCategory['category_name'];
+        $category_description = $validatedCategory['category_description'] ?? '';
+        $category_status = $validatedCategory['category_status'];
+
+        DB::table('categories')->where('id', $id)->update([
+            'name' => $category_name,
+            'description' => $category_description,
+            'status' => $category_status,
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->route('categories.index');
+    }
+
+    // Handle the deletion of a category
+    public function destroy($id)
+    {
+        // Handle the deletion of a category
+        if (!Auth::user()) {
+            return redirect()->route('login');
+        }
+
+        DB::table('categories')->where('id', $id)->delete();
         return redirect()->route('categories.index');
     }
 }

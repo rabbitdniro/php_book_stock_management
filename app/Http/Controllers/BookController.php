@@ -54,7 +54,7 @@ class BookController extends Controller
             'book_publication_year' => 'required|integer|min:1000|max:' . date('Y'),
             'book_stock_quantity' => 'required|integer|min:0',
             'book_description' => 'nullable|string',
-            'book_status' => 'required|in:available,unavailable,borrowed',
+            'book_status' => 'required|in:available,borrowed,out_of_stock',
         ]);
 
         // Creating a unique file name for the uploaded book cover image
@@ -129,6 +129,21 @@ class BookController extends Controller
             return redirect()->route('login');
         }
 
+        $book = DB::table('books')->where('id', $id)->first();
+
+        if (!$book) {
+            return redirect()->route('books.index');
+        }
+
+        // Delete the book cover image from storage if it exists
+        if ($book->cover_image) {
+            $cover_image_path = public_path('storage/' . $book->cover_image);
+            if (file_exists($cover_image_path)) {
+                unlink($cover_image_path);
+            }
+        }
+
+        // Delete the book record from the database
         DB::table('books')->where('id', $id)->delete();
 
         return redirect()->route('books.index');
